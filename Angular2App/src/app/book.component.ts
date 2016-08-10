@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'book',
@@ -7,7 +7,8 @@ import { Component, Input } from '@angular/core';
     <div>
       {{book.title}}
     </div>
-  `
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookComponent {
   @Input() book: any;

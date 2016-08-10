@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 
 import { AuthorComponent } from './app/author.component';
@@ -10,7 +10,8 @@ import { Data } from './shared/data.service';
     <author *ngFor="let author of authors | async" [author]="author"></author>
   `,
   directives: [AuthorComponent],
-  pipes: [AsyncPipe]
+  pipes: [AsyncPipe],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
   authors: Promise<any>;
@@ -20,7 +21,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.authors = this.fetch(3);
+    this.authors = this.fetch(1);
   }
 
   fetch(type: number) {

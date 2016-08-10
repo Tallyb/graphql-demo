@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { BookComponent } from './book.component';
 
@@ -13,7 +13,8 @@ import { BookComponent } from './book.component';
       <book *ngFor="let book of author.books" [book]="book"></book>
     </div>
   `,
-  directives: [BookComponent]
+  directives: [BookComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthorComponent {
   @Input() author: any;
